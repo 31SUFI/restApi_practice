@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:rest_api/posts_model.dart';
+import 'package:rest_api/Models/posts_model.dart';
 
 // Function to fetch posts from the API
 Future<List<Post>> fetchPosts() async {

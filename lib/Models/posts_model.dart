@@ -12,6 +12,7 @@ class Post {
   });
 
   // Factory method to create a Post object from JSON data
+  //Create a dart object from raw JSON, no need to manually extract each data , directly convert into dart object and then it is ready to use
   factory Post.fromJson(Map<String, dynamic> json) {
     return Post(
       userId: json['userId'],

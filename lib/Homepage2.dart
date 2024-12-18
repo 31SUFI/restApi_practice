@@ -1,41 +1,43 @@
+// homepage2.dart
 import 'package:flutter/material.dart';
-import 'package:rest_api/Services/api_service_posts.dart';
-import 'package:rest_api/Models/posts_model.dart';
+import 'package:rest_api/Services/api_service_users.dart'; // Import the API service
+import 'package:rest_api/Models/users_model.dart';
 
-class Homepage extends StatefulWidget {
-  const Homepage({super.key});
+class Homepage2 extends StatefulWidget {
+  const Homepage2({super.key});
 
   @override
-  State<Homepage> createState() => _Homepage();
+  State<Homepage2> createState() => _Homepage2State();
 }
 
-class _Homepage extends State<Homepage> {
-  late Future<List<Post>> futurePosts;
+class _Homepage2State extends State<Homepage2> {
+  late Future<List<User>> futureUsers;
 
   @override
   void initState() {
     super.initState();
-    futurePosts = fetchPosts();
+    futureUsers =
+        getUsersApi(); // Fetching users when the widget is initialized
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Posts from API'),
         centerTitle: true,
+        title: Text('Api Course'),
       ),
-      body: FutureBuilder<List<Post>>(
-        future: futurePosts,
+      body: FutureBuilder<List<User>>(
+        future: futureUsers,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
-                final post = snapshot.data![index];
+                final user = snapshot.data![index];
                 return ListTile(
-                  title: Text(post.title),
-                  subtitle: Text(post.body),
+                  title: Text(user.name),
+                  subtitle: Text(user.email),
                 );
               },
             );

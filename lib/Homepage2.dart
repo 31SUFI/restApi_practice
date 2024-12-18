@@ -37,7 +37,7 @@ class _Homepage2State extends State<Homepage2> {
                 final user = snapshot.data![index];
                 return ListTile(
                   title: Text(user.name),
-                  subtitle: Text(user.email),
+                  subtitle: Text(user.address.city + "" + user.address.zipcode),
                 );
               },
             );

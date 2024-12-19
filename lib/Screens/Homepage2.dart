@@ -25,7 +25,7 @@ class _Homepage2State extends State<Homepage2> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Api Course'),
+        title: const Text('Api Course'),
       ),
       body: FutureBuilder<List<User>>(
         future: futureUsers,
@@ -37,7 +37,7 @@ class _Homepage2State extends State<Homepage2> {
                 final user = snapshot.data![index];
                 return ListTile(
                   title: Text(user.name),
-                  subtitle: Text(user.address.city + "" + user.address.zipcode),
+                  subtitle: Text("${user.address.city}${user.address.zipcode}"),
                 );
               },
             );

@@ -8,13 +8,18 @@ class ProductScreen extends StatelessWidget {
 
   Future<ProductResponse> fetchProducts() async {
     final response = await http.get(
-      Uri.parse('https://webhook.site/f9598ec9-6321-4d4b-a3bd-ee76e904ee6a'),
+      Uri.parse(
+          'https://cors-anywhere.herokuapp.com/https://webhook.site/https://webhook.site/f9598ec9-6321-4d4b-a3bd-ee76e904ee6a'),
+      headers: {
+        'user-agent': 'PostmanRuntime/7.43.0',
+      },
     );
-    print("object");
+
+    print(" Error ${response.statusCode}");
     if (response.statusCode == 200) {
       return ProductResponse.fromJson(jsonDecode(response.body));
     } else {
-      throw Exception('Failed to load products');
+      throw Exception('Failed to load productsssssss');
     }
   }
 
@@ -30,7 +35,7 @@ class ProductScreen extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
+            return Center(child: Text('Errorrrrr: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.data.isEmpty) {
             return const Center(child: Text('No products available'));
           }
